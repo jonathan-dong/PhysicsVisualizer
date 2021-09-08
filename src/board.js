@@ -48,9 +48,9 @@ Board.prototype.createGrid = function () {
 };
 
 Board.prototype.activateButtons = function () {
-  document.getElementById("refreshButton").onclick = () => {
-    window.location.reload(true);
-  };
+  //document.getElementById("refreshButton").onclick = () => {
+  //  window.location.reload(true);
+  //};
 
   document.getElementById("startButtonStart").onclick = () => {
     if (!this.currentSystem) {
