@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <title>Physics Visualizer</title>
+    <link rel="shortcut icon" type="image/jpg" href="src/logo_light.png" />
+  </head>
+  <body>
+    <!-- MODALS -->
+    <!-- Modal Double Pendulum-->
+    <div class="modal fade" id="modalDP" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              More About the Double Pendulum
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h6>Info</h6>
+            <p>
+              A double pendulum is a pendulum with another pendulum attached to
+              its end. The systems behavior is strongly dependent on initial
+              conditions and its motion is governed by a set of coupled ordinary
+              differential equations
+            </p>
+            <h6>Calculations</h6>
+            <p>
+              In this simulation, the connecting rods are considered to be
+              massless and non-conservative forces like air-resistance and
+              friction are ignored such that gravity is the only force acting on
+              the masses. With these simplifications, we can define the system
+              with a few, simple equations in the standard coordinate system:
+              $$x_1 = l_1\sin(\theta_1)$$ $$y_1 = -l_1\cos(\theta_1)$$ $$x_2 =
+              l_1\sin(\theta_1) + l_2\sin(\theta_2)$$ $$y_2 = -l_1\cos(\theta_1)
+              - l_2\cos(\theta_2)$$ where \((x_1, y_1)\) denotes the position of
+              the first mass, \((x_2, y_2)\) denotes the position of the second
+              mass, \(l_1\) and \(l_2\) denote the lengths of the first and
+              second rods, respectively, and \(\theta_1\) and \(\theta_2\)
+              denote the angles of the rods with respect to the vertical.
+            </p>
+            <p>
+              These equations give us enough information to solve this system
+              using Lagrangian Mechanics. We denote the Lagrangian\((L = T -
+              V)\) where \(T\) is the kinetic energy of the system and \(V\) is
+              the potential energy of the system. We then use the Euler-Lagrange
+              equations to solve for the motion of the particles:
+              $$\frac{d}{dt}(\frac{\partial L}{\partial
+              \dot{q_j}})=\frac{\partial L}{\partial q_j}$$ where \(q\) is a
+              point in the configuration space of the system (the vector space
+              defined by the systems generalized coordinates) Read More about
+              lagrangian mechanics and how it works
+              <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics"
+                >here</a
+              >
+            </p>
+            <p>
+              The calculation procedes as follows: $$T = \frac{1}{2}m_1v_1^2 +
+              \frac{1}{2}m_2v_2^2$$ $$ = \frac{1}{2}m_1l_1^2\dot{\theta_1^2} +
+              \frac{1}{2}m_2[l_1^2\dot{\theta_1^2} +
+              l_2\dot{\theta_2^2}+2l_1l_2\dot{\theta_1}\dot{\theta_2}\cos(\theta_1
+              - \theta_2)]$$ $$V = m_1gy_1 + m_2gy_2$$ $$=-(m_1 +
+              m_2)gl_1\cos(\theta_1) - m_2gl_2\cos(\theta_2)$$Thus $$L \equiv T
+              - V = \frac{1}{2}(m_1 + m_2)l_1^2\dot{\theta_1^2}$$ $$+
+              \frac{1}{2}m_2l_2^2\dot{\theta_2^2} +
+              m_2l_1l_2\dot{\theta_1}\dot{\theta_2}\cos(\theta_1 - \theta_2)$$
+              $$+(m_1+m_2)gl_1\cos(\theta_1) + m_2gl_2\cos(\theta_2)$$
+            </p>
+            <p>
+              For \(\theta_1\): $$\frac{\partial L}{\partial \dot{\theta_1}} =
+              m_1l_1^2\dot{\theta_1} +
+              m_2l_1^2\dot{\theta_1}+m_2l_1l_2\dot{\theta_2}\cos(\theta_1 -
+              \theta_2)$$ $$\frac{d}{dt}(\frac{\partial L}{\partial
+              \dot{\theta_1}}) = (m_1+m_2)l_1^2\ddot{\theta_1} +
+              m_2l_1l_2\ddot{\theta_2}\cos(\theta_1 - \theta_2)$$$$ -
+              m_2l_1l_2\dot{\theta_2}\sin(\theta_1 - \theta_2)(\dot{\theta_1} -
+              \dot{\theta_2})$$ $$\frac{\partial L}{\partial \theta_1} =
+              -l_1g(m_1 + m_2)\sin(\theta_1) -
+              m_2l_1l_2\dot{\theta_1}\dot{\theta_2}\sin(\theta_1 - \theta_2)$$
+              So the Euler-Lagrange differential equation for \(\theta_1\)
+              simplifies to $$(m_1 + m_2)l_1\ddot{\theta_1} +
+              m_2l_2\ddot{\theta_2}\cos(\theta_1 - \theta_2) $$$$+
+              m_2l_2\dot{\theta_2^2}\sin(\theta_1 - \theta_2) + g(m_1 +
+              m_2)\sin(\theta_1) = 0$$
+            </p>
+            <p>
+              Similarly for \(\theta_2\): $$\frac{\partial L}{\partial
+              \dot{\theta_2}} =
+              m_2l_2^2\dot{\theta_2}+m_2l_1l_2\dot{\theta_1}\cos(\theta_1 -
+              \theta_2)$$ $$\frac{d}{dt}(\frac{\partial L}{\partial
+              \dot{\theta_2}}) = m_2l_2^2\ddot{\theta_2} +
+              m_2l_1l_2\ddot{\theta_1}\cos(\theta_1 - \theta_2)$$$$ -
+              m_2l_1l_2\dot{\theta_1}\sin(\theta_1 - \theta_2)(\dot{\theta_1} -
+              \dot{\theta_2})$$ $$\frac{\partial L}{\partial \theta_2} =
+              m_2l_1l_2\dot{\theta_1}\dot{\theta_2}\sin(\theta_1 - \theta_2) -
+              l_2m_2g\sin(\theta_2)$$ So the Euler-Lagrange differential
+              equation for \(\theta_2\) simplifies to $$m_2l_2\ddot{\theta_2} +
+              m_2l_1\ddot{\theta_1}\cos(\theta_1 - \theta_2) -
+              m_2l_1\dot{\theta_1^2}\sin(\theta_1 - \theta_2)$$ $$ +
+              m_2g\sin(\theta_2) = 0$$
+            </p>
+            <p>
+              Solving each of the Euler-Lagrange equations to isolate
+              \(\ddot{\theta_1}\) and \(\ddot{\theta_2}\) yields the equations
+              of motion which were used in this simulation
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalSpringP" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              More About the Spring Pendulum
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h6>Info</h6>
+            <p>
+              A spring pendulum (also called an elastic pendulum or swinging
+              spring) is a physical system where a mass is connected to a spring
+              so that the resulting motion contains elements of a simple
+              pendulum as well as a spring. The system is much more complex than
+              that of a simple pendulum.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalLorenz" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              More About the Lorenz System
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h6>Info</h6>
+            <p>
+              The Lorenz System is a system of ordinary differential equations
+              first studied by Edward Lorenz.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- NAV BAR / MAIN CONTENT-->
+    <div id="navbarDiv">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="/src/logo_light.svg"
+              alt=""
+              width="30"
+              height="30"
+              class="d-inline-block align-text-top"
+            />
+            Physics Visualizer
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Systems
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li id="startButtonDoublePendulum">
+                    <a class="dropdown-item" href="#">Double Pendulum</a>
+                  </li>
+                  <li id="startButtonSpringPendulum">
+                    <a class="dropdown-item" href="#">Spring Pendulum</a>
+                  </li>
+                  <li id="startButtonLorenz">
+                    <a class="dropdown-item" href="#">Lorenz System</a>
+                  </li>
+                </ul>
+              </li>
+              <li id="startButtonStart" class="nav-item">
+                <button
+                  type="button"
+                  class="btn btn-outline-info"
+                  style="width: 100%"
+                >
+                  Simulate!
+                </button>
+              </li>
+              5
+              <li id="startButtonTrace" class="nav-item">
+                <a id="TraceLink" class="nav-link" href="#">Show Path</a>
+              </li>
+              <li id="startButtonClearTrace" class="nav-item">
+                <a id="ClearTraceLink" class="nav-link" href="#">Clear Trace</a>
+              </li>
+              <li id="startButtonReset" class="nav-item">
+                <a class="nav-link" href="#">Reset</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="adjustSpeed"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Speed: Fast
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li id="adjustFast">
+                    <a class="dropdown-item" href="#">Fast</a>
+                  </li>
+                  <li id="adjustAverage">
+                    <a class="dropdown-item" href="#">Average</a>
+                  </li>
+                  <li id="adjustSlow">
+                    <a class="dropdown-item" href="#">Slow</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container-fluid" id="display">
+      <div id="mainGrid">
+        <table id="board"></table>
+        <canvas id="systemCanvas"></canvas>
+        <canvas id="traceCanvas"></canvas>
+        <canvas id="traceCanvas2"></canvas>
+      </div>
+      <div id="displayDefault" class="bd-example">
+        <h1>Welcome</h1>
+        <p>Info</p>
+      </div>
+      <div id="tableDataDP" class="bd-example">
+        <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Measurement</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">&theta;&#8321;</th>
+              <td id="theta1"></td>
+            </tr>
+            <tr>
+              <th scope="row">&theta;&#8322;</th>
+              <td id="theta2"></td>
+            </tr>
+            <tr>
+              <th scope="row">l&#8321;</th>
+              <td id="l1"></td>
+            </tr>
+            <tr>
+              <th scope="row">l&#8322;</th>
+              <td id="l2"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="options">
+          <label>
+            <input
+              id="LockRodsCheck"
+              type="checkbox"
+              class="form-check-input"
+            />
+            Lock Rod Length
+          </label>
+          <button
+            type="button"
+            class="btn btn-info"
+            data-bs-toggle="modal"
+            data-bs-target="#modalDP"
+            id="modalbtn"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+      <div id="tableDataSP" class="bd-example">
+        <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Measurement</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">&theta;</th>
+              <td id="thetaSpringP"></td>
+            </tr>
+            <tr>
+              <th scope="row">l&#8320;</th>
+              <td id="l0SpringP"></td>
+            </tr>
+            <tr>
+              <th scope="row">x</th>
+              <td id="xSpringP"></td>
+            </tr>
+          </tbody>
+        </table>
+        <label for="springPkRange" class="form-label">k</label>
+        <input
+          type="range"
+          class="form-range"
+          min="5"
+          max="20"
+          step="0.01"
+          value="10"
+          id="springPkRange"
+        />
+        <label for="springPlRange" class="form=label">l&#8320;</label>
+        <input
+          type="range"
+          class="form-range"
+          min="100"
+          max="250"
+          step="0.01"
+          value="200"
+          id="springPlRange"
+        />
+        <button
+          type="button"
+          class="btn btn-info"
+          data-bs-toggle="modal"
+          data-bs-target="#modalSpringP"
+          id="modalbtn"
+        >
+          Learn More
+        </button>
+      </div>
+      <div id="tableDataL" class="bd-example">
+        <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Measurement</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">x</th>
+              <td id="xLorenz"></td>
+            </tr>
+            <tr>
+              <th scope="row">y</th>
+              <td id="yLorenz"></td>
+            </tr>
+            <tr>
+              <th scope="row">z</th>
+              <td id="zLorenz"></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="lorenzRndBtn">
+          Round
+        </button>
+        <button
+          type="button"
+          class="btn btn-info"
+          data-bs-toggle="modal"
+          data-bs-target="#modalLorenz"
+          id="modalbtn"
+        >
+          Learn More
+        </button>
+      </div>
+    </div>
+    <footer id="footer" class="bg-dark">
+      <div id="footerdiv" class="text-center">CONTACT INFO</div>
+    </footer>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="dist/bundle.js"></script>
+</html>
