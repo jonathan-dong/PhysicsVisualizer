@@ -1,6 +1,7 @@
 #display {
   display: flex;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #startButtonStart {
@@ -105,7 +106,6 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
 }
 
 #footerdiv {

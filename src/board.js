@@ -48,9 +48,9 @@ Board.prototype.createGrid = function () {
 };
 
 Board.prototype.activateButtons = function () {
-  //document.getElementById("refreshButton").onclick = () => {
-  //  window.location.reload(true);
-  //};
+  document.getElementById("refreshButton").onclick = () => {
+    window.location.reload(true);
+  };
 
   document.getElementById("startButtonStart").onclick = () => {
     if (!this.currentSystem) {
@@ -176,3 +176,26 @@ let width = Math.floor($("#mainGrid").width() / 25);
 
 let newBoard = new Board(height, width);
 newBoard.initialize();
+
+document.getElementById("footerdiv").style.height =
+  window.innerHeight -
+  document.getElementById("display").scrollHeight -
+  document.getElementById("navbarDiv").scrollHeight -
+  15 +
+  "px";
+
+//$(window).resize(function () {
+//  let navbarHeight = $("#navbarDiv").height();
+//  let height = Math.floor(($(document).height() - navbarHeight) / 28);
+//  let width = Math.floor($("#mainGrid").width() / 25);
+//
+//  let newBoard = new Board(height, width);
+//  newBoard.initialize();
+//
+//  document.getElementById("footerdiv").style.height =
+//    window.innerHeight -
+//    document.getElementById("display").scrollHeight -
+//    document.getElementById("navbarDiv").scrollHeight -
+//    15 +
+//    "px";
+//});
