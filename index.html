@@ -17,7 +17,11 @@
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
     <title>Physics Visualizer</title>
-    <link rel="shortcut icon" type="image/jpg" href="src/logo_light.png" />
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="src/Images/logo_light.png"
+    />
   </head>
   <body>
     <!-- MODALS -->
@@ -72,7 +76,7 @@
               lagrangian mechanics and how it works
               <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics"
                 >here</a
-              >
+              >.
             </p>
             <p>
               The calculation procedes as follows: $$T = \frac{1}{2}m_1v_1^2 +
@@ -160,6 +164,21 @@
               pendulum as well as a spring. The system is much more complex than
               that of a simple pendulum.
             </p>
+            <h6>Calculations</h6>
+            <p>
+              In this simulation, the position of the mass can be described by
+              two variables: \(\theta\) (the angle of oscillation of the
+              pendulum) and \(x\) (the displacement of the spring from its rest
+              length).
+            </p>
+            <p>
+              Using these variables, we can describe the kinetic and potential
+              energies of the system as follows: $$T = \frac{1}{2}mv^2 =
+              \frac{1}{2}m(\dot{x}^2 + (l_0 + x)^2\dot{\theta}^2)$$ $$V = V_k +
+              V_g = \frac{1}{2}kx^2 - gm(l_0 + x)\cos\theta$$ where \(l_0\)
+              denotes the rest length of the spring and \(k\) represents the
+              spring constant.
+            </p>
           </div>
           <div class="modal-footer">
             <button
@@ -212,7 +231,7 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img
-              src="/src/logo_light.png"
+              src="/src/Images/logo_light.png"
               alt=""
               width="30"
               height="30"
