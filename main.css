@@ -85,7 +85,7 @@
 
 #modalbtn {
   width: 100%;
-  margin-top: 25px;
+  margin-top: 50px;
 }
 
 #tableDataSP {
@@ -104,10 +104,18 @@
 
 #footer {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: 0;
   width: 100%;
 }
 
 #footerdiv {
   width: 100%;
+}
+
+.nav-item {
+  margin-left: 6px;
+  margin-right: 6px;
 }

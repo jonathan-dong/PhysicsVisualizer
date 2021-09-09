@@ -25,6 +25,34 @@
   </head>
   <body>
     <!-- MODALS -->
+    <div class="modal fade" id="modalHelp" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tutorial</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h6>Info</h6>
+            <p>Bruh Help</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Modal Double Pendulum-->
     <div class="modal fade" id="modalDP" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -325,6 +353,14 @@
               </li>
             </ul>
           </div>
+          <span class="navbar-text">
+            <a href="https://github.com/jonathan-dong/PhysicsVisualizer">
+              <img
+                src="src/Images/GitHub-Mark-Light-120px-plus.png"
+                alt="Github"
+                width="24px"
+            /></a>
+          </span>
         </div>
       </nav>
     </div>
@@ -335,9 +371,31 @@
         <canvas id="traceCanvas"></canvas>
         <canvas id="traceCanvas2"></canvas>
       </div>
-      <div id="displayDefault" class="bd-example">
-        <h1>Welcome</h1>
-        <p>Info</p>
+      <div id="displayDefault" class="bd-example text-dark overflow-hidden">
+        <h2>Welcome!</h2>
+        <p>
+          This is a website designed to introduce people to interesting physical
+          systems and hopefully teach them a bit about the physics that goes
+          into describing their behavior.
+        </p>
+        <p>
+          To get started select a system from the dropdown menu and press the
+          "Simulate!" button
+        </p>
+        <p class="fw-lighter">
+          If you would like to learn more about how this website is programmed,
+          press the GitHub logo on the upper right hand corner to access the
+          repository.
+        </p>
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-bs-toggle="modal"
+          data-bs-target="#modalHelp"
+          id="modalbtn"
+        >
+          Help
+        </button>
       </div>
       <div id="tableDataDP" class="bd-example">
         <table class="table table-hover table-sm">
@@ -478,15 +536,9 @@
     </div>
     <footer id="footer" class="bg-dark">
       <div id="footerdiv" class="text-center text-secondary">
-        <h6>Project Designed by Jonathan Dong</h6>
-        <a href="https://github.com/jonathan-dong/PhysicsVisualizer"
-          ><img
-            src="src/Images/GitHub-Mark-Light-120px-plus.png"
-            alt="Github"
-            width="25px"
-        /></a>
+        Website designed and built by Jonathan Dong
         <a href="https://www.linkedin.com/in/jonathan-dong-135374213"
-          ><img src="src/Images/linkedin-white.png" alt="linkedin" width="25px"
+          ><img src="src/Images/linkedin-white.png" alt="linkedin" width="20px"
         /></a>
       </div>
     </footer>
