@@ -38,8 +38,39 @@
             ></button>
           </div>
           <div class="modal-body">
-            <h6>Info</h6>
-            <p>TODO: Help</p>
+            <h6>Quick-start Guide:</h6>
+            <p>
+              Get started by selecting a system from the dropdown menu. Then,
+              you can drag the masses to where you want them to be and start the
+              simulation. For additional information of the additional
+              functionalities of this program see below.
+            </p>
+            <h6>Buttons and what they do:</h6>
+            <ul>
+              <li>
+                Systems: Clicking opens dropdown menu that allows you to choose
+                which system you want to simulate.
+              </li>
+              <li>
+                Simulate: Clicking will start the currently selected simulation.
+              </li>
+              <li>
+                Show Path: Clicking will start drawing line which will trace the
+                motion of the currently running simulation.
+              </li>
+              <li>
+                Clear Trace: Clicking will erase the line which traces the
+                systems motion.
+              </li>
+              <li>
+                Reset: Clicking will reset the currently selected system to its
+                initial conditions.
+              </li>
+              <li>
+                Speed: Clicking opens a dropdown menu that allows you to control
+                the speed of the simulation
+              </li>
+            </ul>
           </div>
           <div class="modal-footer">
             <button
@@ -206,6 +237,21 @@
               V_g = \frac{1}{2}kx^2 - gm(l_0 + x)\cos\theta$$ where \(l_0\)
               denotes the rest length of the spring and \(k\) represents the
               spring constant.
+            </p>
+            <p>
+              These equations give us enough information to solve this system
+              using Lagrangian Mechanics. We denote the Lagrangian\((L = T -
+              V)\) where \(T\) is the kinetic energy of the system and \(V\) is
+              the potential energy of the system. We then use the Euler-Lagrange
+              equations to solve for the motion of the particles:
+              $$\frac{d}{dt}(\frac{\partial L}{\partial
+              \dot{q_j}})=\frac{\partial L}{\partial q_j}$$ where \(q\) is a
+              point in the configuration space of the system (the vector space
+              defined by the systems generalized coordinates) Read More about
+              lagrangian mechanics and how it works
+              <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics"
+                >here</a
+              >.
             </p>
           </div>
           <div class="modal-footer">

@@ -4,6 +4,7 @@ const getDistance = require("./Helpers/getDistance");
 
 function springPendulum() {
   //Objects
+
   this.mass = new mass(
     X0,
     Math.floor($(document).height() - navbarHeight) - 100,
@@ -259,30 +260,36 @@ springPendulum.prototype.fixMassPos = function () {
   //lock spring length
   if (this.mass.isDragging) {
     if (this.lockSpring) {
-      this.mass.x =
-        this.spring.x0 +
-        (this.spring.l0 + this.x) *
-          ((this.mass.x - this.spring.x0) /
-            Math.sqrt(
-              Math.pow(this.mass.x - this.spring.x0, 2) +
-                Math.pow(this.mass.y - this.spring.y0, 2)
-            ));
-      this.mass.y =
-        this.spring.y0 +
-        (this.spring.l0 + this.x) *
-          ((this.mass.y - this.spring.y0) /
-            Math.sqrt(
-              Math.pow(this.mass.x - this.spring.x0, 2) +
-                Math.pow(this.mass.y - this.spring.y0, 2)
-            ));
+      this.fixMassPosHelper;
     }
-    if (true) {
-      //DISALLOW DISPLACEMENT ABOVE 2/k
-      if (Math.abs(this.x) > 100 + 400 / this.spring.k) {
-        //console.log("out");
-      }
+    //DISALLOW DISPLACEMENT ABOVE 2/k
+    else if (this.x > 100 + 400 / this.spring.k) {
+      this.x = 100 + 400 / this.spring.k;
+      this.fixMassPosHelper();
+    } else if (-1 * this.x > 100 + 400 / this.spring.k) {
+      this.x = -100 - 400 / this.spring.k;
+      this.fixMassPosHelper();
     }
   }
+};
+
+springPendulum.prototype.fixMassPosHelper = function () {
+  this.mass.x =
+    this.spring.x0 +
+    (this.spring.l0 + this.x) *
+      ((this.mass.x - this.spring.x0) /
+        Math.sqrt(
+          Math.pow(this.mass.x - this.spring.x0, 2) +
+            Math.pow(this.mass.y - this.spring.y0, 2)
+        ));
+  this.mass.y =
+    this.spring.y0 +
+    (this.spring.l0 + this.x) *
+      ((this.mass.y - this.spring.y0) /
+        Math.sqrt(
+          Math.pow(this.mass.x - this.spring.x0, 2) +
+            Math.pow(this.mass.y - this.spring.y0, 2)
+        ));
 };
 
 springPendulum.prototype.updateData = function () {
