@@ -8,9 +8,7 @@ function Board(height, width) {
   this.height = height;
   this.width = width;
 
-  //System Vars
-  this.context = null;
-  this.contextT = null;
+  // System state variables
   this.currentSystem = null;
   this.systemObj = null;
   this.speed = "fast";
@@ -36,6 +34,7 @@ Board.prototype.createGrid = function () {
   let board = document.getElementById("board");
   board.innerHTML = tableHTML;
 
+  //Set canvas dimensions to match grid dimensions
   let canvas = document.getElementById("systemCanvas");
   canvas.height = $(board).height();
   canvas.width = $(board).width();
@@ -124,9 +123,6 @@ Board.prototype.activateButtons = function () {
     this.systemObj.speed = this.speed;
     this.systemObj.defaultInit();
   };
-  //
-  //ADD START BUTTONS FOR OTHER SYSTEMS HERE
-  //
 
   document.getElementById("startButtonTrace").onclick = () => {
     if (
@@ -145,8 +141,6 @@ Board.prototype.activateButtons = function () {
     }
     this.systemObj.traceOn = !this.systemObj.traceOn;
     this.traceOn = this.systemObj.traceOn;
-
-    //TODO: visualize button toggle position
   };
 
   document.getElementById("startButtonClearTrace").onclick = () => {
@@ -174,6 +168,7 @@ let navbarHeight = $("#navbarDiv").height();
 let height = Math.floor(($(document).height() - navbarHeight) / 27);
 let width = Math.floor($("#mainGrid").width() / 25);
 
+// Create Board
 let newBoard = new Board(height, width);
 newBoard.initialize();
 

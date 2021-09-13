@@ -230,7 +230,7 @@ doublePendulum.prototype.simulate = function () {
       for (let i = 0; i < 8; i++) this.calculate();
     }
   } else {
-    //RUNNING TWICE SOMEHOW IMPROVES EDGE DETECTION PERFORMANCE?
+    //RUNNING TWICE IMPROVES EDGE DETECTION PERFORMANCE?
     this.lockRods = document.getElementById("LockRodsCheck").checked;
     this.fixMassPos();
     this.fixMassPos();
