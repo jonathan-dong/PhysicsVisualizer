@@ -182,12 +182,26 @@ springPendulum.prototype.simulate = function () {
     this.fixMassPos();
     this.fixMassPos();
     //
-    this.spring.k = Number.parseFloat(
-      document.getElementById("springPkRange").value
-    );
-    this.spring.l0 = Number.parseFloat(
-      document.getElementById("springPlRange").value
-    );
+    if (
+      this.spring.k !=
+      Number.parseFloat(document.getElementById("springPkRange").value)
+    ) {
+      this.spring.k = Number.parseFloat(
+        document.getElementById("springPkRange").value
+      );
+      this.dx = 0;
+      this.dtheta = 0;
+    }
+    if (
+      this.spring.l0 !=
+      Number.parseFloat(document.getElementById("springPlRange").value)
+    ) {
+      this.spring.l0 = Number.parseFloat(
+        document.getElementById("springPlRange").value
+      );
+      this.dx = 0;
+      this.dtheta = 0;
+    }
   }
 
   //TODO: update display data and update spring position based on calculated mass position
