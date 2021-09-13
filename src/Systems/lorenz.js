@@ -72,7 +72,7 @@ lorenz.prototype.defaultInit = function () {
   };
 
   document.onmousedown = (e) => {
-    console.log("mousedown");
+    //console.log("mousedown");
     if (!this.isRunning) {
       this.handleMouseDown(e.clientX, e.clientY);
     }
@@ -85,7 +85,7 @@ lorenz.prototype.defaultInit = function () {
   };
 
   document.onmouseup = () => {
-    console.log("mouseup");
+    //console.log("mouseup");
     if (!this.isRunning) {
       this.handleMouseUp();
     }
@@ -124,7 +124,7 @@ lorenz.prototype.end = function () {
   context.clearRect(0, 0, canvas.width, canvas.height);
   contextT.clearRect(0, 0, canvas.width, canvas.height);
   contextT2.clearRect(0, 0, canvas.width, canvas.height);
-  console.log("Lorenz System Simulation Terminated");
+  //console.log("Lorenz System Simulation Terminated");
   document.getElementById("TraceLink").classList.remove("disabled");
   document.getElementById("ClearTraceLink").classList.remove("disabled");
 };
@@ -242,7 +242,7 @@ lorenz.prototype.handleMouseDown = function (x, y) {
   };
   //find x and y of mouse relative to origin of mass to see if it is contained (x-h)^2 + (y-k)^2 = r^2
   if (this.mass.containsMouse(mousePos)) {
-    console.log("in mass");
+    //console.log("in mass");
     this.mass.isDragging = true;
     //Clear and stop rounding mass display
     contextT2.clearRect(0, 0, canvas.width, canvas.height);

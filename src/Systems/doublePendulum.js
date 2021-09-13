@@ -4,12 +4,7 @@ const getDistance = require("./Helpers/getDistance");
 
 function doublePendulum() {
   //Objects
-  this.mass1 = new mass(
-    X0,
-    Math.floor(($(document).height() - navbarHeight) / 2) - 10,
-    25,
-    10
-  );
+  this.mass1 = new mass(X0, Math.floor($(canvas).height() / 50) * 37.5, 25, 10);
   this.mass2 = new mass(
     X0,
     Math.floor($(document).height() - navbarHeight) - 100,
@@ -105,7 +100,7 @@ doublePendulum.prototype.defaultInit = function () {
   };
 
   document.onmousedown = (e) => {
-    console.log("mousedown");
+    //console.log("mousedown");
     if (!this.isRunning) {
       this.handleMouseDown(e.clientX, e.clientY);
     }
@@ -118,7 +113,7 @@ doublePendulum.prototype.defaultInit = function () {
   };
 
   document.onmouseup = () => {
-    console.log("mouseup");
+    //console.log("mouseup");
     if (!this.isRunning) {
       this.handleMouseUp();
     }
@@ -157,14 +152,14 @@ doublePendulum.prototype.handleMouseDown = function (x, y) {
 
   //find x and y of mouse relative to origin of mass to see if it is contained (x-h)^2 + (y-k)^2 = r^2
   if (this.mass1.containsMouse(mousePos)) {
-    console.log("in mass1");
+    //console.log("in mass1");
     this.dtheta1 = 0;
     this.dtheta2 = 0;
     this.mass1.isDragging = true;
   }
 
   if (this.mass2.containsMouse(mousePos)) {
-    console.log("in mass2");
+    //console.log("in mass2");
     this.dtheta1 = 0;
     this.dtheta2 = 0;
     this.mass2.isDragging = true;
@@ -364,7 +359,7 @@ doublePendulum.prototype.end = function () {
   if (this.anim) cancelAnimationFrame(this.anim);
   context.clearRect(0, 0, canvas.width, canvas.height);
   contextT.clearRect(0, 0, canvas.width, canvas.height);
-  console.log("Double Pendulum Simulation Terminated");
+  //console.log("Double Pendulum Simulation Terminated");
 };
 
 //FIXES the mouse position relative to the canvas to avoid bad behavior (moving masses outside of canvas, putting masses on top of one another, length of rods)

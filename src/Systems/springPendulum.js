@@ -74,7 +74,7 @@ springPendulum.prototype.defaultInit = function () {
   };
 
   document.onmousedown = (e) => {
-    console.log("mousedown");
+    //console.log("mousedown");
     if (!this.isRunning) {
       this.handleMouseDown(e.clientX, e.clientY);
     }
@@ -87,7 +87,7 @@ springPendulum.prototype.defaultInit = function () {
   };
 
   document.onmouseup = () => {
-    console.log("mouseup");
+    //console.log("mouseup");
     if (!this.isRunning) {
       this.handleMouseUp();
     }
@@ -134,7 +134,7 @@ springPendulum.prototype.end = function () {
   if (this.anim) cancelAnimationFrame(this.anim);
   context.clearRect(0, 0, canvas.width, canvas.height);
   contextT.clearRect(0, 0, canvas.width, canvas.height);
-  console.log("Spring Pendulum Simulation Terminated");
+  //console.log("Spring Pendulum Simulation Terminated");
 };
 
 //Draws both the mass and the spring
@@ -265,7 +265,7 @@ springPendulum.prototype.fixMassPos = function () {
     if (true) {
       //DISALLOW DISPLACEMENT ABOVE 2/k
       if (Math.abs(this.x) > 100 + 400 / this.spring.k) {
-        console.log("out");
+        //console.log("out");
       }
     }
   }
@@ -309,7 +309,7 @@ springPendulum.prototype.handleMouseDown = function (x, y) {
 
   //find x and y of mouse relative to origin of mass to see if it is contained (x-h)^2 + (y-k)^2 = r^2
   if (this.mass.containsMouse(mousePos)) {
-    console.log("in mass");
+    //console.log("in mass");
     this.mass.isDragging = true;
     this.dtheta = 0;
     this.dx = 0;
