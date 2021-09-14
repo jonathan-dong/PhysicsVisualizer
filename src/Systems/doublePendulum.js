@@ -41,6 +41,14 @@ function doublePendulum() {
     y: this.mass2.y,
   };
 
+  //consider adding
+  //this.temppos = {
+  //  x1: this.mass1.x,
+  //  y1: this.mass1.y,
+  //  x2: this.mass2.x,
+  //  y2: this.mass2.y,
+  //};
+
   //calculation
   this.theta1 = 0;
   this.theta2 = 0;

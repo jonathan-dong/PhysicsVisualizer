@@ -50,6 +50,12 @@ function springPendulum() {
   this.dtheta = 0;
   this.dx = 0;
 
+  //Necessary to disconnect tracking of mouse position while dragging mass to avoid animation errors
+  this.temppos = {
+    x: this.mass.x,
+    y: this.mass.y,
+  };
+
   this.hasMoved = true;
   this.traceColors = ["#FF7F00", "#FFEF00", "#00F11D", "#0079FF", "violet"];
 }
@@ -95,7 +101,6 @@ springPendulum.prototype.defaultInit = function () {
   };
 
   //TODO: RESET VALUES WHEN K OR L0 ARE CHANGED
-
   this.anim = window.requestAnimationFrame(() => {
     this.simulate();
   });
@@ -114,6 +119,8 @@ springPendulum.prototype.reset = function () {
   //RESTORE MASS POSITION
   this.mass.x = this.mass0.x;
   this.mass.y = this.mass0.y;
+  this.temppos.x = this.mass.x;
+  this.temppos.y = this.mass.y;
 
   //RESTORE SPRING POSITION
   this.spring.x1 = this.mass.x;
@@ -140,6 +147,7 @@ springPendulum.prototype.end = function () {
 
 //Draws both the mass and the spring
 springPendulum.prototype.draw = function () {
+  this.updateData();
   this.mass.drawMass(context);
   this.spring.drawSpring(context);
 
@@ -175,13 +183,21 @@ springPendulum.prototype.simulate = function () {
     } else if (this.speed === "average") {
       for (let i = 0; i < 5; i++) this.calculate();
     }
+
+    this.temppos.x = this.mass.x;
+    this.temppos.y = this.mass.y;
   } else {
     //RUNNING MORE SOMEHOW IMPROVES EDGE DETECTION PERFORMANCE?
+    this.mass.x = this.temppos.x;
+    this.mass.y = this.temppos.y;
+    this.fixMassPos();
+
+    if (this.mass.isDragging) {
+      this.mass0.x = this.mass.x;
+      this.mass0.y = this.mass.y;
+    }
+
     this.lockRods = document.getElementById("LockRodsCheck").checked;
-    this.fixMassPos();
-    this.fixMassPos();
-    this.fixMassPos();
-    this.fixMassPos();
     //
     if (
       this.spring.k !=
@@ -210,11 +226,6 @@ springPendulum.prototype.simulate = function () {
   this.spring.y1 = this.mass.y;
   this.updateData();
   this.draw();
-
-  if (this.mass.isDragging) {
-    this.mass0.x = this.mass.x;
-    this.mass0.y = this.mass.y;
-  }
 
   this.requireRAF = true;
   this.anim = window.requestAnimationFrame(() => {
@@ -258,19 +269,50 @@ springPendulum.prototype.fixMassPos = function () {
   if (this.mass.y < 0) this.mass.y = 0;
 
   //lock spring length
-  if (this.mass.isDragging) {
-    if (this.lockSpring) {
-      this.fixMassPosHelper;
-    }
-    //DISALLOW DISPLACEMENT ABOVE 2/k
-    else if (this.x > 100 + 400 / this.spring.k) {
-      this.x = 100 + 400 / this.spring.k;
-      this.fixMassPosHelper();
-    } else if (-1 * this.x > 100 + 400 / this.spring.k) {
-      this.x = -100 - 400 / this.spring.k;
-      this.fixMassPosHelper();
-    }
+  if (this.lockSpring) {
+    this.fixMassPosHelper;
   }
+  //DISALLOW DISPLACEMENT ABOVE 2/k
+  else if (this.x > 50 + 400 / this.spring.k) {
+    this.mass.x =
+      this.spring.x0 +
+      (this.spring.l0 + 50 + 400 / this.spring.k) *
+        ((this.mass.x - this.spring.x0) /
+          Math.sqrt(
+            Math.pow(this.mass.x - this.spring.x0, 2) +
+              Math.pow(this.mass.y - this.spring.y0, 2)
+          ));
+    this.mass.y =
+      this.spring.y0 +
+      (this.spring.l0 + 50 + 400 / this.spring.k) *
+        ((this.mass.y - this.spring.y0) /
+          Math.sqrt(
+            Math.pow(this.mass.x - this.spring.x0, 2) +
+              Math.pow(this.mass.y - this.spring.y0, 2)
+          ));
+    this.x = 50 + 400 / this.spring.k;
+  } else if (-1 * this.x > 50 + 400 / this.spring.k) {
+    this.mass.x =
+      this.spring.x0 +
+      (this.spring.l0 - 50 - 400 / this.spring.k) *
+        ((this.mass.x - this.spring.x0) /
+          Math.sqrt(
+            Math.pow(this.mass.x - this.spring.x0, 2) +
+              Math.pow(this.mass.y - this.spring.y0, 2)
+          ));
+
+    this.mass.y =
+      this.spring.y0 +
+      (this.spring.l0 - 50 - 400 / this.spring.k) *
+        ((this.mass.y - this.spring.y0) /
+          Math.sqrt(
+            Math.pow(this.mass.x - this.spring.x0, 2) +
+              Math.pow(this.mass.y - this.spring.y0, 2)
+          ));
+    this.x = -50 - 400 / this.spring.k;
+  }
+  this.spring.x1 = this.mass.x;
+  this.spring.y1 = this.mass.y;
 };
 
 springPendulum.prototype.fixMassPosHelper = function () {
@@ -348,8 +390,10 @@ springPendulum.prototype.handleMouseMove = function (x, y) {
   };
 
   if (this.mass.isDragging) {
-    this.mass.x = mousePos.x;
-    this.mass.y = mousePos.y;
+    //this.mass.x = mousePos.x;
+    //this.mass.y = mousePos.y;
+    this.temppos.x = mousePos.x;
+    this.temppos.y = mousePos.y;
 
     if (!this.hasMoved) {
       this.currColor =
