@@ -5,19 +5,9 @@ const getDistance = require("./Helpers/getDistance");
 function springPendulum() {
   //Objects
 
-  this.mass = new mass(
-    X0,
-    Math.floor($(document).height() - navbarHeight) - 100,
-    25,
-    10
-  );
+  this.mass = new mass(X0, Math.floor($(canvas).height() / 50) * 25 + 200, 25, 10);
 
-  this.spring = new spring(
-    X0,
-    Math.floor($(canvas).height() / 50) * 25,
-    this.mass.x,
-    this.mass.y
-  );
+  this.spring = new spring(X0, Math.floor($(canvas).height() / 50) * 25, this.mass.x, this.mass.y);
 
   //state
   this.isRunning = false;
@@ -41,12 +31,7 @@ function springPendulum() {
   //Calculation vars
   this.theta = 0;
   this.x =
-    getDistance(
-      this.spring.x0,
-      this.spring.y0,
-      this.spring.x1,
-      this.spring.y1
-    ) - this.spring.l0;
+    getDistance(this.spring.x0, this.spring.y0, this.spring.x1, this.spring.y1) - this.spring.l0;
   this.dtheta = 0;
   this.dx = 0;
 
@@ -199,23 +184,13 @@ springPendulum.prototype.simulate = function () {
 
     this.lockRods = document.getElementById("LockRodsCheck").checked;
     //
-    if (
-      this.spring.k !=
-      Number.parseFloat(document.getElementById("springPkRange").value)
-    ) {
-      this.spring.k = Number.parseFloat(
-        document.getElementById("springPkRange").value
-      );
+    if (this.spring.k != Number.parseFloat(document.getElementById("springPkRange").value)) {
+      this.spring.k = Number.parseFloat(document.getElementById("springPkRange").value);
       this.dx = 0;
       this.dtheta = 0;
     }
-    if (
-      this.spring.l0 !=
-      Number.parseFloat(document.getElementById("springPlRange").value)
-    ) {
-      this.spring.l0 = Number.parseFloat(
-        document.getElementById("springPlRange").value
-      );
+    if (this.spring.l0 != Number.parseFloat(document.getElementById("springPlRange").value)) {
+      this.spring.l0 = Number.parseFloat(document.getElementById("springPlRange").value);
       this.dx = 0;
       this.dtheta = 0;
     }
@@ -248,10 +223,8 @@ springPendulum.prototype.calculate = function () {
   this.theta += this.dtheta * t;
   this.x += this.dx * t;
 
-  this.mass.x =
-    this.spring.x0 + (this.spring.l0 + this.x) * Math.sin(this.theta);
-  this.mass.y =
-    this.spring.y0 + (this.spring.l0 + this.x) * Math.cos(this.theta);
+  this.mass.x = this.spring.x0 + (this.spring.l0 + this.x) * Math.sin(this.theta);
+  this.mass.y = this.spring.y0 + (this.spring.l0 + this.x) * Math.cos(this.theta);
 
   //TRACE
   if (this.traceOn) {
@@ -279,16 +252,14 @@ springPendulum.prototype.fixMassPos = function () {
       (this.spring.l0 + 50 + 400 / this.spring.k) *
         ((this.mass.x - this.spring.x0) /
           Math.sqrt(
-            Math.pow(this.mass.x - this.spring.x0, 2) +
-              Math.pow(this.mass.y - this.spring.y0, 2)
+            Math.pow(this.mass.x - this.spring.x0, 2) + Math.pow(this.mass.y - this.spring.y0, 2)
           ));
     this.mass.y =
       this.spring.y0 +
       (this.spring.l0 + 50 + 400 / this.spring.k) *
         ((this.mass.y - this.spring.y0) /
           Math.sqrt(
-            Math.pow(this.mass.x - this.spring.x0, 2) +
-              Math.pow(this.mass.y - this.spring.y0, 2)
+            Math.pow(this.mass.x - this.spring.x0, 2) + Math.pow(this.mass.y - this.spring.y0, 2)
           ));
     this.x = 50 + 400 / this.spring.k;
   } else if (-1 * this.x > 50 + 400 / this.spring.k) {
@@ -297,8 +268,7 @@ springPendulum.prototype.fixMassPos = function () {
       (this.spring.l0 - 50 - 400 / this.spring.k) *
         ((this.mass.x - this.spring.x0) /
           Math.sqrt(
-            Math.pow(this.mass.x - this.spring.x0, 2) +
-              Math.pow(this.mass.y - this.spring.y0, 2)
+            Math.pow(this.mass.x - this.spring.x0, 2) + Math.pow(this.mass.y - this.spring.y0, 2)
           ));
 
     this.mass.y =
@@ -306,8 +276,7 @@ springPendulum.prototype.fixMassPos = function () {
       (this.spring.l0 - 50 - 400 / this.spring.k) *
         ((this.mass.y - this.spring.y0) /
           Math.sqrt(
-            Math.pow(this.mass.x - this.spring.x0, 2) +
-              Math.pow(this.mass.y - this.spring.y0, 2)
+            Math.pow(this.mass.x - this.spring.x0, 2) + Math.pow(this.mass.y - this.spring.y0, 2)
           ));
     this.x = -50 - 400 / this.spring.k;
   }
@@ -321,38 +290,26 @@ springPendulum.prototype.fixMassPosHelper = function () {
     (this.spring.l0 + this.x) *
       ((this.mass.x - this.spring.x0) /
         Math.sqrt(
-          Math.pow(this.mass.x - this.spring.x0, 2) +
-            Math.pow(this.mass.y - this.spring.y0, 2)
+          Math.pow(this.mass.x - this.spring.x0, 2) + Math.pow(this.mass.y - this.spring.y0, 2)
         ));
   this.mass.y =
     this.spring.y0 +
     (this.spring.l0 + this.x) *
       ((this.mass.y - this.spring.y0) /
         Math.sqrt(
-          Math.pow(this.mass.x - this.spring.x0, 2) +
-            Math.pow(this.mass.y - this.spring.y0, 2)
+          Math.pow(this.mass.x - this.spring.x0, 2) + Math.pow(this.mass.y - this.spring.y0, 2)
         ));
 };
 
 springPendulum.prototype.updateData = function () {
   if (!this.isRunning) {
-    this.theta = Math.atan2(
-      this.spring.x1 - this.spring.x0,
-      this.spring.y1 - this.spring.y0
-    );
+    this.theta = Math.atan2(this.spring.x1 - this.spring.x0, this.spring.y1 - this.spring.y0);
     this.x =
-      getDistance(
-        this.spring.x0,
-        this.spring.y0,
-        this.spring.x1,
-        this.spring.y1
-      ) - this.spring.l0;
+      getDistance(this.spring.x0, this.spring.y0, this.spring.x1, this.spring.y1) - this.spring.l0;
   }
 
   let edit = document.getElementById("thetaSpringP");
-  edit.innerHTML = `${Number.parseFloat((this.theta * 180) / Math.PI).toFixed(
-    2
-  )}`;
+  edit.innerHTML = `${Number.parseFloat((this.theta * 180) / Math.PI).toFixed(2)}`;
   edit = document.getElementById("l0SpringP");
   edit.innerHTML = `${Number.parseFloat(this.spring.l0).toFixed(2)}`;
   edit = document.getElementById("xSpringP");
@@ -396,8 +353,7 @@ springPendulum.prototype.handleMouseMove = function (x, y) {
     this.temppos.y = mousePos.y;
 
     if (!this.hasMoved) {
-      this.currColor =
-        this.currColor >= this.traceColors.length - 1 ? 0 : ++this.currColor;
+      this.currColor = this.currColor >= this.traceColors.length - 1 ? 0 : ++this.currColor;
       this.hasMoved = true;
     }
   }
