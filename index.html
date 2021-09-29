@@ -17,11 +17,7 @@
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
     <title>Physics Visualizer</title>
-    <link
-      rel="shortcut icon"
-      type="image/jpg"
-      href="src/Images/logo_light.png"
-    />
+    <link rel="shortcut icon" type="image/jpg" href="src/Images/logo_light.png" />
   </head>
   <body>
     <!-- MODALS -->
@@ -40,46 +36,33 @@
           <div class="modal-body">
             <h6>Quick-start Guide:</h6>
             <p>
-              Get started by selecting a system from the dropdown menu. Then,
-              you can drag the masses to where you want them to be and start the
-              simulation. For additional information of the additional
-              functionalities of this program see below.
+              Get started by selecting a system from the dropdown menu. Then, you can drag the
+              masses to where you want them to be and start the simulation. For additional
+              information of the additional functionalities of this program see below.
             </p>
             <h6>Buttons and what they do:</h6>
             <ul>
               <li>
-                Systems: Clicking opens dropdown menu that allows you to choose
-                which system you want to simulate.
+                Systems: Clicking opens dropdown menu that allows you to choose which system you
+                want to simulate.
+              </li>
+              <li>Simulate: Clicking will start the currently selected simulation.</li>
+              <li>
+                Show Path: Clicking will start drawing line which will trace the motion of the
+                currently running simulation.
+              </li>
+              <li>Clear Trace: Clicking will erase the line which traces the systems motion.</li>
+              <li>
+                Reset: Clicking will reset the currently selected system to its initial conditions.
               </li>
               <li>
-                Simulate: Clicking will start the currently selected simulation.
-              </li>
-              <li>
-                Show Path: Clicking will start drawing line which will trace the
-                motion of the currently running simulation.
-              </li>
-              <li>
-                Clear Trace: Clicking will erase the line which traces the
-                systems motion.
-              </li>
-              <li>
-                Reset: Clicking will reset the currently selected system to its
-                initial conditions.
-              </li>
-              <li>
-                Speed: Clicking opens a dropdown menu that allows you to control
-                the speed of the simulation
+                Speed: Clicking opens a dropdown menu that allows you to control the speed of the
+                simulation
               </li>
             </ul>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -89,9 +72,7 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              More About the Double Pendulum
-            </h5>
+            <h5 class="modal-title" id="exampleModalLabel">More About the Double Pendulum</h5>
             <button
               type="button"
               class="btn-close"
@@ -102,100 +83,75 @@
           <div class="modal-body">
             <h6>Info</h6>
             <p>
-              A double pendulum is a pendulum with another pendulum attached to
-              its end. The systems behavior is strongly dependent on initial
-              conditions and its motion is governed by a set of coupled ordinary
-              differential equations
+              A double pendulum is a pendulum with another pendulum attached to its end. The systems
+              behavior is strongly dependent on initial conditions and its motion is governed by a
+              set of coupled ordinary differential equations
             </p>
             <h6>Calculations</h6>
             <p>
-              In this simulation, the connecting rods are considered to be
-              massless and non-conservative forces like air-resistance and
-              friction are ignored such that gravity is the only force acting on
-              the masses. With these simplifications, we can define the system
-              with a few, simple equations in the standard coordinate system:
-              $$x_1 = l_1\sin(\theta_1)$$ $$y_1 = -l_1\cos(\theta_1)$$ $$x_2 =
-              l_1\sin(\theta_1) + l_2\sin(\theta_2)$$ $$y_2 = -l_1\cos(\theta_1)
-              - l_2\cos(\theta_2)$$ where \((x_1, y_1)\) denotes the position of
-              the first mass, \((x_2, y_2)\) denotes the position of the second
-              mass, \(l_1\) and \(l_2\) denote the lengths of the first and
-              second rods, respectively, and \(\theta_1\) and \(\theta_2\)
-              denote the angles of the rods with respect to the vertical.
+              In this simulation, the connecting rods are considered to be massless and
+              non-conservative forces like air-resistance and friction are ignored such that gravity
+              is the only force acting on the masses. With these simplifications, we can define the
+              system with a few, simple equations in the standard coordinate system: $$x_1 =
+              l_1\sin(\theta_1)$$ $$y_1 = -l_1\cos(\theta_1)$$ $$x_2 = l_1\sin(\theta_1) +
+              l_2\sin(\theta_2)$$ $$y_2 = -l_1\cos(\theta_1) - l_2\cos(\theta_2)$$ where \((x_1,
+              y_1)\) denotes the position of the first mass, \((x_2, y_2)\) denotes the position of
+              the second mass, \(l_1\) and \(l_2\) denote the lengths of the first and second rods,
+              respectively, and \(\theta_1\) and \(\theta_2\) denote the angles of the rods with
+              respect to the vertical.
             </p>
             <p>
-              These equations give us enough information to solve this system
-              using Lagrangian Mechanics. We denote the Lagrangian\((L = T -
-              V)\) where \(T\) is the kinetic energy of the system and \(V\) is
-              the potential energy of the system. We then use the Euler-Lagrange
-              equations to solve for the motion of the particles:
-              $$\frac{d}{dt}(\frac{\partial L}{\partial
-              \dot{q_j}})=\frac{\partial L}{\partial q_j}$$ where \(q\) is a
-              point in the configuration space of the system (the vector space
-              defined by the systems generalized coordinates) Read More about
-              lagrangian mechanics and how it works
-              <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics"
-                >here</a
-              >.
+              These equations give us enough information to solve this system using Lagrangian
+              Mechanics. We denote the Lagrangian\((L = T - V)\) where \(T\) is the kinetic energy
+              of the system and \(V\) is the potential energy of the system. We then use the
+              Euler-Lagrange equations to solve for the motion of the particles:
+              $$\frac{d}{dt}(\frac{\partial L}{\partial \dot{q_j}})=\frac{\partial L}{\partial
+              q_j}$$ where \(q\) is a point in the configuration space of the system (the vector
+              space defined by the systems generalized coordinates) Read More about lagrangian
+              mechanics and how it works
+              <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics">here</a>.
             </p>
             <p>
-              The calculation procedes as follows: $$T = \frac{1}{2}m_1v_1^2 +
-              \frac{1}{2}m_2v_2^2$$ $$ = \frac{1}{2}m_1l_1^2\dot{\theta_1^2} +
-              \frac{1}{2}m_2[l_1^2\dot{\theta_1^2} +
-              l_2\dot{\theta_2^2}+2l_1l_2\dot{\theta_1}\dot{\theta_2}\cos(\theta_1
-              - \theta_2)]$$ $$V = m_1gy_1 + m_2gy_2$$ $$=-(m_1 +
-              m_2)gl_1\cos(\theta_1) - m_2gl_2\cos(\theta_2)$$Thus $$L \equiv T
-              - V = \frac{1}{2}(m_1 + m_2)l_1^2\dot{\theta_1^2}$$ $$+
-              \frac{1}{2}m_2l_2^2\dot{\theta_2^2} +
+              The calculation procedes as follows: $$T = \frac{1}{2}m_1v_1^2 + \frac{1}{2}m_2v_2^2$$
+              $$ = \frac{1}{2}m_1l_1^2\dot{\theta_1^2} + \frac{1}{2}m_2[l_1^2\dot{\theta_1^2} +
+              l_2\dot{\theta_2^2}+2l_1l_2\dot{\theta_1}\dot{\theta_2}\cos(\theta_1 - \theta_2)]$$
+              $$V = m_1gy_1 + m_2gy_2$$ $$=-(m_1 + m_2)gl_1\cos(\theta_1) -
+              m_2gl_2\cos(\theta_2)$$Thus $$L \equiv T - V = \frac{1}{2}(m_1 +
+              m_2)l_1^2\dot{\theta_1^2}$$ $$+ \frac{1}{2}m_2l_2^2\dot{\theta_2^2} +
               m_2l_1l_2\dot{\theta_1}\dot{\theta_2}\cos(\theta_1 - \theta_2)$$
               $$+(m_1+m_2)gl_1\cos(\theta_1) + m_2gl_2\cos(\theta_2)$$
             </p>
             <p>
               For \(\theta_1\): $$\frac{\partial L}{\partial \dot{\theta_1}} =
-              m_1l_1^2\dot{\theta_1} +
-              m_2l_1^2\dot{\theta_1}+m_2l_1l_2\dot{\theta_2}\cos(\theta_1 -
-              \theta_2)$$ $$\frac{d}{dt}(\frac{\partial L}{\partial
-              \dot{\theta_1}}) = (m_1+m_2)l_1^2\ddot{\theta_1} +
-              m_2l_1l_2\ddot{\theta_2}\cos(\theta_1 - \theta_2)$$$$ -
-              m_2l_1l_2\dot{\theta_2}\sin(\theta_1 - \theta_2)(\dot{\theta_1} -
-              \dot{\theta_2})$$ $$\frac{\partial L}{\partial \theta_1} =
-              -l_1g(m_1 + m_2)\sin(\theta_1) -
-              m_2l_1l_2\dot{\theta_1}\dot{\theta_2}\sin(\theta_1 - \theta_2)$$
-              So the Euler-Lagrange differential equation for \(\theta_1\)
-              simplifies to $$(m_1 + m_2)l_1\ddot{\theta_1} +
+              m_1l_1^2\dot{\theta_1} + m_2l_1^2\dot{\theta_1}+m_2l_1l_2\dot{\theta_2}\cos(\theta_1 -
+              \theta_2)$$ $$\frac{d}{dt}(\frac{\partial L}{\partial \dot{\theta_1}}) =
+              (m_1+m_2)l_1^2\ddot{\theta_1} + m_2l_1l_2\ddot{\theta_2}\cos(\theta_1 - \theta_2)$$$$
+              - m_2l_1l_2\dot{\theta_2}\sin(\theta_1 - \theta_2)(\dot{\theta_1} - \dot{\theta_2})$$
+              $$\frac{\partial L}{\partial \theta_1} = -l_1g(m_1 + m_2)\sin(\theta_1) -
+              m_2l_1l_2\dot{\theta_1}\dot{\theta_2}\sin(\theta_1 - \theta_2)$$ So the Euler-Lagrange
+              differential equation for \(\theta_1\) simplifies to $$(m_1 + m_2)l_1\ddot{\theta_1} +
               m_2l_2\ddot{\theta_2}\cos(\theta_1 - \theta_2) $$$$+
-              m_2l_2\dot{\theta_2^2}\sin(\theta_1 - \theta_2) + g(m_1 +
-              m_2)\sin(\theta_1) = 0$$
+              m_2l_2\dot{\theta_2^2}\sin(\theta_1 - \theta_2) + g(m_1 + m_2)\sin(\theta_1) = 0$$
             </p>
             <p>
-              Similarly for \(\theta_2\): $$\frac{\partial L}{\partial
-              \dot{\theta_2}} =
-              m_2l_2^2\dot{\theta_2}+m_2l_1l_2\dot{\theta_1}\cos(\theta_1 -
-              \theta_2)$$ $$\frac{d}{dt}(\frac{\partial L}{\partial
-              \dot{\theta_2}}) = m_2l_2^2\ddot{\theta_2} +
+              Similarly for \(\theta_2\): $$\frac{\partial L}{\partial \dot{\theta_2}} =
+              m_2l_2^2\dot{\theta_2}+m_2l_1l_2\dot{\theta_1}\cos(\theta_1 - \theta_2)$$
+              $$\frac{d}{dt}(\frac{\partial L}{\partial \dot{\theta_2}}) = m_2l_2^2\ddot{\theta_2} +
               m_2l_1l_2\ddot{\theta_1}\cos(\theta_1 - \theta_2)$$$$ -
-              m_2l_1l_2\dot{\theta_1}\sin(\theta_1 - \theta_2)(\dot{\theta_1} -
-              \dot{\theta_2})$$ $$\frac{\partial L}{\partial \theta_2} =
+              m_2l_1l_2\dot{\theta_1}\sin(\theta_1 - \theta_2)(\dot{\theta_1} - \dot{\theta_2})$$
+              $$\frac{\partial L}{\partial \theta_2} =
               m_2l_1l_2\dot{\theta_1}\dot{\theta_2}\sin(\theta_1 - \theta_2) -
-              l_2m_2g\sin(\theta_2)$$ So the Euler-Lagrange differential
-              equation for \(\theta_2\) simplifies to $$m_2l_2\ddot{\theta_2} +
-              m_2l_1\ddot{\theta_1}\cos(\theta_1 - \theta_2) -
-              m_2l_1\dot{\theta_1^2}\sin(\theta_1 - \theta_2)$$ $$ +
-              m_2g\sin(\theta_2) = 0$$
+              l_2m_2g\sin(\theta_2)$$ So the Euler-Lagrange differential equation for \(\theta_2\)
+              simplifies to $$m_2l_2\ddot{\theta_2} + m_2l_1\ddot{\theta_1}\cos(\theta_1 - \theta_2)
+              - m_2l_1\dot{\theta_1^2}\sin(\theta_1 - \theta_2)$$ $$ + m_2g\sin(\theta_2) = 0$$
             </p>
             <p>
-              Solving each of the Euler-Lagrange equations to isolate
-              \(\ddot{\theta_1}\) and \(\ddot{\theta_2}\) yields the equations
-              of motion which were used in this simulation
+              Solving each of the Euler-Lagrange equations to isolate \(\ddot{\theta_1}\) and
+              \(\ddot{\theta_2}\) yields the equations of motion which were used in this simulation
             </p>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -204,9 +160,7 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              More About the Spring Pendulum
-            </h5>
+            <h5 class="modal-title" id="exampleModalLabel">More About the Spring Pendulum</h5>
             <button
               type="button"
               class="btn-close"
@@ -217,51 +171,38 @@
           <div class="modal-body">
             <h6>Info</h6>
             <p>
-              A spring pendulum (also called an elastic pendulum or swinging
-              spring) is a physical system where a mass is connected to a spring
-              so that the resulting motion contains elements of a simple
-              pendulum as well as a spring. The system is much more complex than
-              that of a simple pendulum.
+              A spring pendulum (also called an elastic pendulum or swinging spring) is a physical
+              system where a mass is connected to a spring so that the resulting motion contains
+              elements of a simple pendulum as well as a spring. The system is much more complex
+              than that of a simple pendulum.
             </p>
             <h6>Calculations</h6>
             <p>
-              In this simulation, the position of the mass can be described by
-              two variables: \(\theta\) (the angle of oscillation of the
-              pendulum) and \(x\) (the displacement of the spring from its rest
-              length).
+              In this simulation, the position of the mass can be described by two variables:
+              \(\theta\) (the angle of oscillation of the pendulum) and \(x\) (the displacement of
+              the spring from its rest length).
             </p>
             <p>
-              Using these variables, we can describe the kinetic and potential
-              energies of the system as follows: $$T = \frac{1}{2}mv^2 =
-              \frac{1}{2}m(\dot{x}^2 + (l_0 + x)^2\dot{\theta}^2)$$ $$V = V_k +
-              V_g = \frac{1}{2}kx^2 - gm(l_0 + x)\cos\theta$$ where \(l_0\)
-              denotes the rest length of the spring and \(k\) represents the
-              spring constant.
+              Using these variables, we can describe the kinetic and potential energies of the
+              system as follows: $$T = \frac{1}{2}mv^2 = \frac{1}{2}m(\dot{x}^2 + (l_0 +
+              x)^2\dot{\theta}^2)$$ $$V = V_k + V_g = \frac{1}{2}kx^2 - gm(l_0 + x)\cos\theta$$
+              where \(l_0\) denotes the rest length of the spring and \(k\) represents the spring
+              constant.
             </p>
             <p>
-              These equations give us enough information to solve this system
-              using Lagrangian Mechanics. We denote the Lagrangian\((L = T -
-              V)\) where \(T\) is the kinetic energy of the system and \(V\) is
-              the potential energy of the system. We then use the Euler-Lagrange
-              equations to solve for the motion of the particles:
-              $$\frac{d}{dt}(\frac{\partial L}{\partial
-              \dot{q_j}})=\frac{\partial L}{\partial q_j}$$ where \(q\) is a
-              point in the configuration space of the system (the vector space
-              defined by the systems generalized coordinates) Read More about
-              lagrangian mechanics and how it works
-              <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics"
-                >here</a
-              >.
+              These equations give us enough information to solve this system using Lagrangian
+              Mechanics. We denote the Lagrangian\((L = T - V)\) where \(T\) is the kinetic energy
+              of the system and \(V\) is the potential energy of the system. We then use the
+              Euler-Lagrange equations to solve for the motion of the particles:
+              $$\frac{d}{dt}(\frac{\partial L}{\partial \dot{q_j}})=\frac{\partial L}{\partial
+              q_j}$$ where \(q\) is a point in the configuration space of the system (the vector
+              space defined by the systems generalized coordinates) Read More about lagrangian
+              mechanics and how it works
+              <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics">here</a>.
             </p>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -270,9 +211,7 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              More About the Lorenz System
-            </h5>
+            <h5 class="modal-title" id="exampleModalLabel">More About the Lorenz System</h5>
             <button
               type="button"
               class="btn-close"
@@ -283,18 +222,20 @@
           <div class="modal-body">
             <h6>Info</h6>
             <p>
-              The Lorenz System is a system of ordinary differential equations
-              first studied by Edward Lorenz.
+              The Lorenz System is a system of ordinary differential equations first studied by
+              Edward Lorenz. It is notable for having chaotic solutions i.e. a high dependence on
+              initial conditions.
+            </p>
+            <h6>Calculations</h6>
+            <p>
+              The Lorenz model is a system of the following three ordinary differential equations:
+              $$ \frac{dx}{dt} = \sigma (y - x) $$ $$ \frac{dy}{dt} = x(\rho - z) - y $$ $$
+              \frac{dz}{dt} xy - \beta z$$ Where \( \rho, \beta, \sigma \) are constants. (In this
+              simulation we use the values \( \rho = 10, \beta = 8/3, \rho = 28\))
             </p>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -337,10 +278,7 @@
                 >
                   Systems
                 </a>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li id="startButtonDoublePendulum">
                     <a class="dropdown-item" href="#">Double Pendulum</a>
                   </li>
@@ -353,11 +291,7 @@
                 </ul>
               </li>
               <li id="startButtonStart" class="nav-item">
-                <button
-                  type="button"
-                  class="btn btn-outline-info"
-                  style="width: 100%"
-                >
+                <button type="button" class="btn btn-outline-info" style="width: 100%">
                   Simulate!
                 </button>
               </li>
@@ -382,10 +316,7 @@
                 >
                   Speed: Fast
                 </a>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li id="adjustFast">
                     <a class="dropdown-item" href="#">Fast</a>
                   </li>
@@ -401,10 +332,7 @@
           </div>
           <span class="navbar-text">
             <a href="https://github.com/jonathan-dong/PhysicsVisualizer">
-              <img
-                src="src/Images/GitHub-Mark-Light-120px-plus.png"
-                alt="Github"
-                width="24px"
+              <img src="src/Images/GitHub-Mark-Light-120px-plus.png" alt="Github" width="24px"
             /></a>
           </span>
         </div>
@@ -420,18 +348,15 @@
       <div id="displayDefault" class="bd-example text-dark overflow-hidden">
         <h2>Welcome!</h2>
         <p>
-          This is a website designed to introduce people to interesting physical
-          systems and hopefully teach them a bit about the physics that goes
-          into describing their behavior.
+          This is a website designed to introduce people to interesting physical systems and
+          hopefully teach them a bit about the physics that goes into describing their behavior.
         </p>
         <p>
-          To get started select a system from the dropdown menu and press the
-          "Simulate!" button
+          To get started select a system from the dropdown menu and press the "Simulate!" button
         </p>
         <p class="fw-lighter">
-          If you would like to learn more about how this website is programmed,
-          press the GitHub logo on the upper right hand corner to access the
-          repository.
+          If you would like to learn more about how this website is programmed, press the GitHub
+          logo on the upper right hand corner to access the repository.
         </p>
         <button
           type="button"
@@ -472,11 +397,7 @@
         </table>
         <div id="options">
           <label>
-            <input
-              id="LockRodsCheck"
-              type="checkbox"
-              class="form-check-input"
-            />
+            <input id="LockRodsCheck" type="checkbox" class="form-check-input" />
             Lock Rod Length
           </label>
           <button
@@ -566,9 +487,7 @@
             </tr>
           </tbody>
         </table>
-        <button type="button" class="btn btn-primary" id="lorenzRndBtn">
-          Round
-        </button>
+        <button type="button" class="btn btn-primary" id="lorenzRndBtn">Round</button>
         <button
           type="button"
           class="btn btn-info"
