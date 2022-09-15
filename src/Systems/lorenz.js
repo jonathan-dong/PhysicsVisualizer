@@ -31,10 +31,6 @@ function lorenz() {
 
   this.hasMoved = true;
   this.traceColors = ["#FF7F00", "#FFEF00", "#00F11D", "#0079FF", "violet"];
-  //this.trace0 = {
-  //  prev0: this.mass.x,
-  //  prevy: this.mass.y,
-  //};
 }
 
 //Starts the simulation and prepares event handlers buttons and interface

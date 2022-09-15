@@ -178,19 +178,3 @@ document.getElementById("footer").style.height =
   document.getElementById("navbarDiv").scrollHeight -
   15 +
   "px";
-
-//$(window).resize(function () {
-//  let navbarHeight = $("#navbarDiv").height();
-//  let height = Math.floor(($(document).height() - navbarHeight) / 28);
-//  let width = Math.floor($("#mainGrid").width() / 25);
-//
-//  let newBoard = new Board(height, width);
-//  newBoard.initialize();
-//
-//  document.getElementById("footerdiv").style.height =
-//    window.innerHeight -
-//    document.getElementById("display").scrollHeight -
-//    document.getElementById("navbarDiv").scrollHeight -
-//    15 +
-//    "px";
-//});

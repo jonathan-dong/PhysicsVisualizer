@@ -130,15 +130,6 @@ doublePendulum.prototype.defaultInit = function () {
   this.anim = window.requestAnimationFrame(() => {
     this.simulate();
   });
-  //var init = setInterval(function() {
-  //IF SELECTION SWITCHES
-  //    if (!_self.selected) {
-  //        console.log("END");
-  //        clearInterval(init);
-  //    } else {
-  //        _self.simulate();
-  //    }
-  //}, 10);
 };
 
 doublePendulum.prototype.draw = function () {
